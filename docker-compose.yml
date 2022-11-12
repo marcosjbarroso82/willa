@@ -24,6 +24,7 @@ services:
   truffle:
       build: ./truffle
       container_name: truffle
+      command: npm start
       volumes:
         - ./truffle:/usr/src/app
       ports:
