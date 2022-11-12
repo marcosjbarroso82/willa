@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./ganache_data:/ganache_data
+    entrypoint:
+      - node
+      - /app/ganache-core.docker.cli.js
+      - --deterministic
+      - --db=/ganache_data
+      - --mnemonic
+      - 'minimum symptom minute gloom tragic situate silver mechanic salad amused elite beef'
+      - --networkId
+      - '5777'
+      - --hostname
+      - '0.0.0.0'
+      - --debug
+  # ENTRYPOINT ["node", "./build/cli.node.js"]
+  # ENTRYPOINT ["node", "/app/ganache-core.docker.cli.js"]
+
+  truffle:
+      build: ./truffle
+      container_name: truffle
+      volumes:
+        - ./truffle:/usr/src/app
+      ports:
+      - "3000:3000"
+      depends_on:
+        - ganache
