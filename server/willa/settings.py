@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'main',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['*', 'github.dev', 'localhost']
+# CSRF_TRUSTED_ORIGINS = ['http://*', 'github.dev', 'localhost']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
