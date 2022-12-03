@@ -1,0 +1,21 @@
+Django==4.1.2
+mysqlclient==2.1.1
+ipython==8.5.0
+youtube-dl==2021.12.17
+xmltodict==0.13.0
+requests==2.28.1
+djangorestframework
+django-storages==1.13.1
+markdown
+# django-filter
+# django-more-admin-filters
+# django-advanced-filtersipdb==0.13.9
+python-box==6.1.0
+dpath==2.0.6
+pytest-django==4.5.2
+pytest-watch==4.2.0
+ipdb==0.13.9
+Pillow==9.3.0
+django-filter==22.1
+djangorestframework-simplejwt==5.2.2
+django-cors-headers==3.13.0
