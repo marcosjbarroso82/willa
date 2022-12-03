@@ -1,32 +1,36 @@
 version: "3.4"
 services:
-  ganache-ui:
-    build:
-      context: .
-      dockerfile: Dockerfile.ganache-ui
+  # ganache-ui:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.ganache-ui
+  #   ports:
+  #     - "7545:7545"
+  #   environment:
+  #   - DISPLAY=host.docker.internal:0
+  #   volumes:
+  #   - /tmp/.X11-unix:/tmp/.X11-unix:rw
     
 
-  ganache:
-    image: trufflesuite/ganache-cli:latest
-    ports:
-      - "8545:8545"
-    volumes:
-      - ./ganache_data:/ganache_data
-    entrypoint:
-      - node
-      - /app/ganache-core.docker.cli.js
-      - --account="0x6a9bf47d3df96f50c6d512259c342322fd8a942eb350f3b6bf6029fd28d73ba2,1000000000000000000000000000000000000000"
-      - --deterministic
-      - --db=/ganache_data
-      - --mnemonic
-      - 'minimum symptom minute gloom tragic situate silver mechanic salad amused elite beef'
-      - --networkId
-      - '5777'
-      - --hostname
-      - '0.0.0.0'
-      - --debug
-       # ENTRYPOINT ["node", "./build/cli.node.js"]
-  # ENTRYPOINT ["node", "/app/ganache-core.docker.cli.js"]
+  # ganache:
+  #   image: trufflesuite/ganache-cli:latest
+  #   ports:
+  #     - "8545:8545"
+  #   volumes:
+  #     - ./ganache_data:/ganache_data
+  #   entrypoint:
+  #     - node
+  #     - /app/ganache-core.docker.cli.js
+  #     - --account="0x6a9bf47d3df96f50c6d512259c342322fd8a942eb350f3b6bf6029fd28d73ba2,1000000000000000000000000000000000000000"
+  #     - --deterministic
+  #     - --db=/ganache_data
+  #     - --mnemonic
+  #     - 'minimum symptom minute gloom tragic situate silver mechanic salad amused elite beef'
+  #     - --networkId
+  #     - '5777'
+  #     - --hostname
+  #     - '0.0.0.0'
+  #     - --debug
 
   # truffle:
   #     build: ./truffle
@@ -38,3 +42,16 @@ services:
   #     - "3000:3000"
   #     depends_on:
   #       - ganache
+
+  server:
+    build:
+      context: ./server
+    image: verificat-server
+    ports:
+      - 8000:8000
+
+    volumes:
+      - ./server:/app
+      - ./server/media:/app/media
+    command: python manage.py runserver 0.0.0.0:8000
+  
