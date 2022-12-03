@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'main',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['*', 'github.dev', 'localhost']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
