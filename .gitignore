@@ -1,4 +1,6 @@
 ganache_data
+*.pyc
+__pychache__
 
 # Logs
 logs
